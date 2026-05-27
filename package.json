@@ -47,11 +47,6 @@
     "directories": {
       "buildResources": "assets"
     },
-    "publish": {
-      "provider": "github",
-      "owner": "rajeshbyreddy",
-      "repo": "trustinn-desktopp"
-    },
     "win": {
       "target": [
         {
