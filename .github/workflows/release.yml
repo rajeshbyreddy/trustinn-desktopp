@@ -48,6 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Collect build artifacts
+        shell: bash
         run: |
           mkdir -p release-artifacts
           # Copy DMG files
