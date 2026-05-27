@@ -18,10 +18,7 @@
     "dist": "npm run prebuild:nextjs && npm run prebuild:electron && electron-builder"
   },
   "dependencies": {
-    "electron-updater": "^6.1.1",
-    "next": "^14.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "electron-updater": "^6.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
@@ -32,7 +29,10 @@
     "electron": "^27.0.0",
     "electron-builder": "^24.6.4",
     "electron-is-dev": "^2.0.0",
+    "next": "^14.0.0",
     "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
   },
@@ -40,9 +40,8 @@
     "appId": "com.trustinn.app",
     "productName": "TrustInn",
     "files": [
-      "dist/**/*",
-      "out/**/*",
-      "node_modules/**/*"
+      "dist/main/**/*",
+      "out/**/*"
     ],
     "directories": {
       "buildResources": "assets"
