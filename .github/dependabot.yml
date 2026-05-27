@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    reviewers:
+      - "rajeshbyreddy"
+    allow:
+      - dependency-type: "production"
+      - dependency-type: "development"

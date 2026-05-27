@@ -1,0 +1,102 @@
+{
+  "name": "trustinn-desktop",
+  "version": "1.0.0",
+  "description": "TrustInn Desktop Application",
+  "main": "dist/main/main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "verify": "node verify-setup.js",
+    "dev": "npm run dev:electron",
+    "dev:electron": "npm run prebuild:electron && npm run prebuild:nextjs && cross-env NODE_ENV=development electron .",
+    "electron-dev": "npm run dev:electron",
+    "prebuild:electron": "tsc --project tsconfig.main.json",
+    "prebuild:nextjs": "next build",
+    "build": "npm run prebuild:nextjs && npm run prebuild:electron && electron-builder",
+    "release": "npm run prebuild:nextjs && npm run prebuild:electron && electron-builder --publish=always",
+    "pack": "npm run prebuild:electron && electron-builder --dir",
+    "dist": "npm run prebuild:nextjs && npm run prebuild:electron && electron-builder"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.1",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "electron-is-dev": "^2.0.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.3"
+  },
+  "build": {
+    "appId": "com.trustinn.app",
+    "productName": "TrustInn",
+    "files": [
+      "dist/**/*",
+      "out/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "rajeshbyreddy",
+      "repo": "trustinn-desktopp"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "certificateFile": null,
+      "certificatePassword": null,
+      "signingHashAlgorithms": [
+        "sha256"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "hardenedRuntime": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}
