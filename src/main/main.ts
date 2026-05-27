@@ -9,6 +9,10 @@ import { autoUpdater as updater } from 'electron-updater'
 import path from 'path'
 import isDev from 'electron-is-dev'
 
+if (isDev) {
+  updater.forceDevUpdateConfig = true
+}
+
 let mainWindow: BrowserWindow | null = null
 
 // Handle Squirrel events for Windows installer
